@@ -1,0 +1,16 @@
+<?php
+
+namespace InnoGames\Judge;
+
+use InnoGames\Contestant;
+
+/**
+ * This judge gives a random score out of 10, regardless of the calculated contestant score.
+ */
+class RandomJudge implements Judge
+{
+    public function score(Contestant $contestant): int
+    {
+        return rand(1, 10);
+    }
+}

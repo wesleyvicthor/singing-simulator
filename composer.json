@@ -1,0 +1,22 @@
+{
+    "name": "innog/singing-simulator",
+    "description": "InnoGames Singing Contest Simulator",
+    "type": "project",
+    "require-dev": {},
+    "license": "private",
+    "authors": [
+        {
+            "name": "Wesley",
+            "email": "w.v.mendes.s@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "symfony/console": "5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "InnoGames\\": "src/"
+        }
+    }
+}
