@@ -1,8 +1,8 @@
 <?php
 
-namespace InnoGames\Judge;
+namespace InnoGames\SingingSimulator\Judge;
 
-use InnoGames\Contestant;
+use InnoGames\SingingSimulator\Contest\Contestant;
 
 /**
  * This judge gives a random score out of 10, regardless of the calculated contestant score.

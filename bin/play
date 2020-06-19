@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+use InnoGames\SingingSimulator\Command\SingingSimulatorHandler;
+use Symfony\Component\Console\SingleCommandApplication;
+
+ini_set('memory_limit', -1);
+set_time_limit(0);
+
+require __DIR__ . '/../vendor/autoload.php';
+
+try {
+    (new SingleCommandApplication())
+        ->setName('Singing Simulator Contest')
+        ->setCode(new SingingSimulatorHandler())
+        ->run();
+} catch (\Throwable $e) {
+    fwrite(STDOUT, $e->getMessage().PHP_EOL);
+    exit(1);
+}

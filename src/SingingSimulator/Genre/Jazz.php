@@ -1,8 +1,8 @@
 <?php
 
-namespace InnoGames\Genre;
+namespace InnoGames\SingingSimulator\Genre;
 
-class Jazz implements Genre
+final class Jazz extends Genre
 {
 
 }

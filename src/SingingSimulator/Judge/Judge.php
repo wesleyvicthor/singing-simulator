@@ -1,8 +1,8 @@
 <?php
 
-namespace InnoGames\Judge;
+namespace InnoGames\SingingSimulator\Judge;
 
-use InnoGames\Contestant;
+use InnoGames\SingingSimulator\Contest\Contestant;
 
 interface Judge
 {

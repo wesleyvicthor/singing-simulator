@@ -1,11 +1,8 @@
 <?php
 
-namespace InnoGames\Genre;
+namespace InnoGames\SingingSimulator\Genre;
 
-class Country implements Genre
+final class Country extends Genre
 {
-    public function factor()
-    {
-        //
-    }
+
 }

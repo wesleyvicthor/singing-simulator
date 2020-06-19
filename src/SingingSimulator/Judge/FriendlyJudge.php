@@ -1,8 +1,8 @@
 <?php
 
-namespace InnoGames\Judge;
+namespace InnoGames\SingingSimulator\Judge;
 
-use InnoGames\Contestant;
+use InnoGames\SingingSimulator\Contest\Contestant;
 
 /**
  * This judge gives every contestant a score of 8 unless they have a
@@ -14,7 +14,7 @@ class FriendlyJudge implements Judge
     public function score(Contestant $contestant): int
     {
         $score = 8;
-        if ($contestant->rating() <= 3) {
+        if ($contestant->strength() <= 3) {
             $score = 7;
         }
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace InnoGames\Judge;
+namespace InnoGames\SingingSimulator\Judge;
 
-use InnoGames\Contestant;
+use InnoGames\SingingSimulator\Contest\Contestant;
 
 /**
  * This judge converts the calculated contestant score evenly using the following table:
@@ -34,11 +34,12 @@ class HonestJudge implements Judge
         10 => [90, 100],
     ];
 
+    // check conditional there are chances of failing
     public function score(Contestant $contestant): int
     {
-        $rating = $contestant->rating();
+        $strength = $contestant->strength();
         foreach ($this->ranges as $score => $range) {
-            if ($rating > $range[0] && $rating <= $range[1]) {
+            if ($strength > $range[0] && $strength <= $range[1]) {
                 return $score;
             }
         }

@@ -1,8 +1,8 @@
 <?php
 
-namespace InnoGames\Genre;
+namespace InnoGames\SingingSimulator\Genre;
 
-class Rock implements Genre
+final class Rock extends Genre
 {
 
 }

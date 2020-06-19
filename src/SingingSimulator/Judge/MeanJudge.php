@@ -1,8 +1,8 @@
 <?php
 
-namespace InnoGames\Judge;
+namespace InnoGames\SingingSimulator\Judge;
 
-use InnoGames\Contestant;
+use InnoGames\SingingSimulator\Contest\Contestant;
 
 /**
  * This judge gives every contestant with a calculated contestant score less than 90.0
@@ -14,7 +14,7 @@ class MeanJudge implements Judge
 
     public function score(Contestant $contestant): int
     {
-        if ($contestant->rating() < self::AVG_MEAN) {
+        if ($contestant->strength() < self::AVG_MEAN) {
             return 2;
         }
 

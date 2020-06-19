@@ -1,8 +1,8 @@
 <?php
 
-namespace InnoGames\Genre;
+namespace InnoGames\SingingSimulator\Genre;
 
-class Pop implements Genre
+final class Pop extends Genre
 {
 
 }

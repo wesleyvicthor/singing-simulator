@@ -1,8 +1,8 @@
 <?php
 
-namespace InnoGames\Genre;
+namespace InnoGames\SingingSimulator\Genre;
 
-class TheBlues implements Genre
+final class TheBlues extends Genre
 {
 
 }

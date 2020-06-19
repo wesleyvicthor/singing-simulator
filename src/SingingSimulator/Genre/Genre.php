@@ -1,8 +1,16 @@
 <?php
 
-namespace InnoGames\Genre;
+namespace InnoGames\SingingSimulator\Genre;
 
-interface Genre
+abstract class Genre
 {
+    public function strengthFactor(): int
+    {
+        return rand(1, 10);
+    }
 
+    public function __toString()
+    {
+        return substr(strrchr(get_class($this), '\\'), 1);
+    }
 }

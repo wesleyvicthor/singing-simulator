@@ -1,8 +1,8 @@
 <?php
 
-namespace InnoGames\Genre;
+namespace InnoGames\SingingSimulator\Genre;
 
-class Disco implements \InnoGames\Genre\Genre
+final class Disco extends Genre
 {
 
 }

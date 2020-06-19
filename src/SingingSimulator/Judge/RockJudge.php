@@ -1,9 +1,9 @@
 <?php
 
-namespace InnoGames\Judge;
+namespace InnoGames\SingingSimulator\Judge;
 
-use InnoGames\Contestant;
-use InnoGames\Genre\Rock;
+use InnoGames\SingingSimulator\Contest\Contestant;
+use InnoGames\SingingSimulator\Genre\Rock;
 
 /**
  * This judge's favourite genre is `Rock`. For any other genre, the `RockJudge` gives a random integer score
@@ -20,12 +20,12 @@ class RockJudge implements Judge
             return rand(1, 10);
         }
 
-        $rating = $contestant->rating();
-        if ($rating < 50) {
+        $strength = $contestant->strength();
+        if ($strength < 50) {
             return 5;
         }
 
-        if ($rating >= 50 && $rating <= 74.9) {
+        if ($strength >= 50 && $strength <= 74.9) {
             return 8;
         }
 
