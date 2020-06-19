@@ -2,15 +2,14 @@
 
 namespace InnoGames\SingingSimulator\Genre;
 
+use InnoGames\SingingSimulator\Identify;
+
 abstract class Genre
 {
+    use Identify;
+
     public function strengthFactor(): int
     {
         return rand(1, 10);
-    }
-
-    public function __toString()
-    {
-        return substr(strrchr(get_class($this), '\\'), 1);
     }
 }

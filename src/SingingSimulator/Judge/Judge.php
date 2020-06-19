@@ -3,8 +3,11 @@
 namespace InnoGames\SingingSimulator\Judge;
 
 use InnoGames\SingingSimulator\Contest\Contestant;
+use InnoGames\SingingSimulator\Identify;
 
-interface Judge
+abstract class Judge
 {
-    public function score(Contestant $contestant): int;
+    use Identify;
+
+    abstract public function score(Contestant $contestant): int;
 }

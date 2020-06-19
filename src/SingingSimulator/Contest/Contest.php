@@ -4,6 +4,9 @@ namespace InnoGames\SingingSimulator\Contest;
 
 class Contest
 {
+    const CONTESTANTS = 10;
+    const JUDGES = 3;
+
     private array $contestantsIds;
 
     /**
@@ -49,34 +52,36 @@ class Contest
         return $finalScore;
     }
 
+    /**
+     * @return Score[]
+     */
     public function winners(): array
     {
         $result = $this->result();
+        $scores = array_map(fn($i) => $i->score(), $result);
         $tieScore = 0;
-        foreach(array_count_values($result) as $score => $count) {
+        foreach(array_count_values($scores) as $score => $count) {
             if ($count > 1 && $score > $tieScore) {
                 $tieScore = $score;
             }
         }
 
-        $winnerScore = 0;
-        $winnerId = null;
-        foreach ($result as $id => $score) {
-            if ($score > $winnerScore) {
-                $winnerScore = $score;
-                $winnerId = $id;
-            }
-        }
-
         $winners = [];
+        $winnerScore = max($scores);
         if ($winnerScore == $tieScore) {
-            foreach ($result as $id => $score) {
-                if ($score == $tieScore) {
-                    $winners[] = [$id, $score];
+            foreach ($result as $score) {
+                if ($score->score() == $tieScore) {
+                    $winners[] = new Winner($score);
                 }
             }
+
+            return $winners;
         }
 
-        return empty($winners) ? [[$winnerId, $winnerScore]] : $winners;
+        foreach($result as $score) {
+            if ($score->score() == $winnerScore) {
+                return [new Winner($score)];
+            }
+        }
     }
 }

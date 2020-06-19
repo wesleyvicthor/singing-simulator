@@ -19,7 +19,7 @@ use InnoGames\SingingSimulator\Contest\Contestant;
  * |    90.1 - 100.0       |     10     |
  * -
  */
-class HonestJudge implements Judge
+class HonestJudge extends Judge
 {
     private $ranges = [
         1 => [0, 10],

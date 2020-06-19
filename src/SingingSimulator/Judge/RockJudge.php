@@ -12,7 +12,7 @@ use InnoGames\SingingSimulator\Genre\Rock;
  * less than 50.0 results in a judge score of 5, 50.0 to 74.9 results in an 8,
  * while 75 and above results in a 10.
  */
-class RockJudge implements Judge
+class RockJudge extends Judge
 {
     public function score(Contestant $contestant): int
     {

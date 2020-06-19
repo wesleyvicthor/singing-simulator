@@ -13,22 +13,30 @@ use InnoGames\SingingSimulator\Genre\Rock;
 use InnoGames\SingingSimulator\Genre\TheBlues;
 use InnoGames\SingingSimulator\Judge\FriendlyJudge;
 use InnoGames\SingingSimulator\Judge\HonestJudge;
+use InnoGames\SingingSimulator\Judge\Judge;
 use InnoGames\SingingSimulator\Judge\MeanJudge;
 use InnoGames\SingingSimulator\Judge\RandomJudge;
 use InnoGames\SingingSimulator\Judge\RockJudge;
 
 class SingingSimulator
 {
-    const CONTESTANTS = 10;
+    /**
+     * @var Judge[]
+     */
+    private array $judges;
+
+    public function __construct()
+    {
+        $this->judges = $this->randJudges();
+    }
 
     public function start(): Contest
     {
-        $contest = new Contest(...array_map(fn($ref) => new ContestantId($ref), range(1, self::CONTESTANTS)));
-        $judges = $this->judges();
+        $contest = new Contest(...array_map(fn($ref) => new ContestantId($ref), range(1, Contest::CONTESTANTS)));
         foreach ($this->genres() as $genre) {
             $round = new Round(
                 $genre,
-                ...array_map(fn($k) => $judges[$k], array_rand($judges, 3))
+                ...$this->judges
             );
 
             $contest->addRound($round);
@@ -37,15 +45,22 @@ class SingingSimulator
         return $contest;
     }
 
-    private function judges()
+    public function judges(): array
     {
-        return [
+        return $this->judges;
+    }
+
+    private function randJudges(): array
+    {
+        $judges = [
             new MeanJudge(),
             new RockJudge(),
             new HonestJudge(),
             new RandomJudge(),
             new FriendlyJudge(),
         ];
+
+        return array_map(fn($k) => $judges[$k], array_rand($judges, Contest::JUDGES));
     }
 
     private function genres(): array
