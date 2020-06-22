@@ -2,6 +2,7 @@
 <?php
 
 use InnoGames\SingingSimulator\Command\SingingSimulatorHandler;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\SingleCommandApplication;
 
 ini_set('memory_limit', -1);
@@ -11,6 +12,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 try {
     (new SingleCommandApplication())
+        ->addOption(SingingSimulatorHandler::OPT_HISTORY, 'hi', InputOption::VALUE_OPTIONAL, 'a history of the last five contest winners and their final scores')
         ->setName('Singing Simulator Contest')
         ->setCode(new SingingSimulatorHandler())
         ->run();

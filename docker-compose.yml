@@ -4,13 +4,22 @@ services:
     build: .
     volumes:
       - '.:/usr/src/app'
+    depends_on:
+      - mysql
+    stdin_open: true
+    tty: true
     env_file:
       - .env
 
   mysql:
     image: mysql:5.7
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql
     environment:
       - MYSQL_DATABASE=inno
-      - MYSQL_ROOT_PASSWORD=inno
+      - MYSQL_ROOT_PASSWORD=${DB_PASSW}
     ports:
       - 3306:3306
+    env_file:
+      - .env

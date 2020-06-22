@@ -16,9 +16,17 @@ class Contest
 
     private array $results;
 
+    private string $id;
+
     public function __construct(ContestantId ...$contestants)
     {
         $this->contestantsIds = $contestants;
+        $this->id = uniqid();
+    }
+
+    public function id(): string
+    {
+        return $this->id;
     }
 
     public function addRound(Round $round)
